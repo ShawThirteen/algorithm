@@ -32,11 +32,13 @@ function FindContinuousSequence(sum)
         // 例如9 = 2 + 3 + 4, i = 3;那么边界值是9/3 - 3/2向上取整是2
         var limitL = Math.ceil(sum / i - i / 2); 
         var saveArr = []; // 临时数组,用来存放可累加数组的值
+        var result = 0; // 临时变量,用来存储当前数组的加和
         
         for (var n = 0; n < i; n++) {
+            result += (limitL + n);
             saveArr[n] = limitL + n; // 因为已经确定了当前累加数组的长度为i,所以每个值都是左边界limitL+n
         }
-        if (countArr(saveArr) == sum) { // 计算每个数组的加和,去除不合法的数组
+        if (result == sum) { // 计算每个数组的加和,去除不合法的数组
             tmpArr.push(saveArr);
         }
     }
@@ -46,11 +48,4 @@ function FindContinuousSequence(sum)
     return tmpArr;
 }
 
-// 一个求和函数
-function countArr (arr) {
-    var result = 0;
-    for (var i = arr.length; i--;) {
-        result += arr[i];
-    }
-    return result;
-}
+
