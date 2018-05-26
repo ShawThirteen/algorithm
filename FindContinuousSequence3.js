@@ -14,12 +14,14 @@ function FindContinuousSequence(sum)
      
     for (var i = 1; i < maxLen;i++) { // 假设每个数组的开头是i
         var saveArr = [];
+        var result = 0;
         for (var j = i; j <= maxLen; j++) { // 从i向后延伸j个长度,计算每次延伸的时候该数组的和
             saveArr[j - i] = j;
-            if (countArr(saveArr) == sum) {  // 如果和==sum,那么保存数组,j不在延伸,数组的i加一(数组开头向后位移一位)
+            result += j;
+            if (result == sum) {  // 如果和==sum,那么保存数组,j不在延伸,数组的i加一(数组开头向后位移一位)
                 tmpArr.push(saveArr);
                 break;
-            } else if (countArr(saveArr) > sum) { // 如果加和大于sum,说明本次以i开头的数组不合法
+            } else if (result > sum) { // 如果加和大于sum,说明本次以i开头的数组不合法
                 break;
             }
         }
