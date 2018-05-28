@@ -24,7 +24,7 @@ function FindNumbersWithSum(arr, sum)
     var limitR = newArr.length;  // 创建一个右边界符,当最右边的数字用过一次,那么下次的的加和数字一定在此之前
     
     for (var i = 0, len = newArr.length; i < len; i++){
-        for (var j = i + 1; j < limitR; j++) {  // 遍历每个数字i,将i与i之后的每一个数字相加,对比sum
+        for (var j = limitR; j > i +1; j--) {  // 遍历每个数字i,将i与i之后的每一个数字相加(从大向小加),对比sum
             var tmpSum = newArr[i] + newArr[j];
             if (tmpSum == sum) {
                 limitR = j;                     // 当加和与sum相等,又边界向左移动,可以理解为每个数字只用一次
@@ -32,6 +32,7 @@ function FindNumbersWithSum(arr, sum)
                     min = tmpSum;
                     returnArr = [newArr[i], newArr[j]];
                 }
+                break;
             }
         }
     }
