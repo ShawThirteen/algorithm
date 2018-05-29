@@ -36,7 +36,7 @@ function multiply(arr)
     var rightArr = [];    // 右半边的数组
     
     // 首先计算出左边数组
-    for (var i = 0, len = arr.length; i < len; i++) {
+    for (var i = 0, len = arr.length; i < len - 1; i++) {
         leftArr[i + 1] = leftArr[i] * arr[i];
     }
 
